@@ -244,10 +244,80 @@ int detect_fin(int **plateau, int taille);
 Ici, nous détaillerons comment fonctionne le système de sauvegarde et de chargement de la sauvegarde et d'un niveau.\\
 Les niveaux sont stockés dans le répertoire \textbf{./maps} et sont des fichiers du nom \textbf{"map$x$.txt"} avec $x$ étant le numéro du niveau. Chaque fichier contient une suite de 400 entiers représentant la map de jeu.\\
 Le fichier \textbf{save.txt} est aussi dans le même répertoire et contient la dernière sauvegarde faite par le joueur (le fichier n'existe pas si le joueur n'a jamais sauvegardé). Le fichier est de la même forme que ceux contenant les maps, hormis qu'au début de celui-ci sont aussi stockés le numéro du niveau, le temps écoulé lors de la partie et le score de la partie.\\
+\newline
+\textbf{save(...):}
+\begin{itemize}
+\item Cette fonction permet de sauvegarder la progression dans le fichier \textbf{save.txt}.
+\item Elle note le temps auquel la sauvegarde a été faite, le nombre de tours écoulés durant la partie, et le niveau.
+\end{itemize}
+Signature de fonction :
+\begin{lstlisting}
+void save(int** plateau, int niveau, int time, int nb_tours);
+\end{lstlisting}
+\textbf{charger(...):}
+\begin{itemize}
+\item Cette fonction permet de charger un niveau.
+\end{itemize}
+Signature de fonction :
+\begin{lstlisting}
+void charger(int *num_niveau, int **plateau, int *x, int *y, int charge_save, int *time, int *nb_tours);
+\end{lstlisting}
+\textbf{if\_file\_exist(...):}
+\begin{itemize}
+\item Cette fonction permet de contrôler si un fichier existe.
+\end{itemize}
+Signature de fonction :
+\begin{lstlisting}
+int if_file_exist(char *fichier);
+\end{lstlisting}
 \newpage
 
 \subsection{Menu/Niveaux}
 Ici, nous allons détailler les fonctions utilisées pour l'affichage du menu et le déplacement entre les niveaux lors de la partie.
+\newline
+\textbf{menu(...):}
+\begin{itemize}
+\item Cette fonction affiche le menu et permettant au joueur de choisir ce qu'il veut faire.
+\item Les options de joueur sont: 
+\begin{itemize}
+\item Si le joueur appuye "1", il va commencer une nouvelle partie.
+\item Si le joueur appuye "2", il va changer la partie.
+\item Si le joueur appuye "3", les régles de jeu seront affichées.
+\item Si le joueur appuye "4", il quitte le jeu.
+\end{itemize}
+\end{itemize}
+Signature de fonction :
+\begin{lstlisting}
+void menu(int ** plateau, int *score_tab);
+\end{lstlisting}
+\textbf{lance-niveau(...):}
+\begin{itemize}
+\item Cette focntion permet de lancer le niveau voulu.
+\item \textit{charger\_niveau} permet de savoir si on charge le fichier sauvegardé ou non.
+\end{itemize}
+Signature de fonction :
+\begin{lstlisting}
+void lance_niveau(int num_niveau, int ** plateau,int charger_niveau, int *score_tab);
+\end{lstlisting}
+\textbf{fin-niveau(...):}
+\begin{itemize}
+\item Cette fonction gére la transition entre les niveaux.
+\item Si l'utilisateur a terminé un niveau, le programme lui demande s'il veut continuer au niveau suivant ou non.
+\item Si l'utilisateur a terminé le jeu le programme lui demande s'il veut revenier au 1er niveau ou retourner au menu.
+\item Si l'utilisateur a perdu le niveau, le programme lui demande s'il veut retenter le niveau ou retourner au menu.
+\end{itemize}
+Signature de fonction :
+\begin{lstlisting}
+void fin_niveau(int fin,int num_niveau, int **plateau, int *score_tab);
+\end{lstlisting}
+\textbf{regles():}
+\begin{itemize}
+\item Cette fonction affiche tous les règles de jeu et les instructions.
+\end{itemize}
+Signature de fonction :
+\begin{lstlisting}
+void regles();
+\end{lstlisting}
 \newpage
 
 \subsection{Chronomètre}
@@ -269,6 +339,5 @@ Le calcul du score se fait par la formule suivante :
 \listoffigures
 
 \end{document}
-
 
 
