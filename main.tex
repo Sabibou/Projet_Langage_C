@@ -218,7 +218,7 @@ void maj_carte(int ** plateau, int *x, int *y, int depla_x, int depla_y);
 \end{lstlisting}
 \textbf{deplacememt(...):}
 \begin{itemize}
-\item Cette fonction s'oocupe de gérer le déplacement du personnage dans le tableau.
+\item Cette fonction s'occupe de gérer le déplacement du personnage dans le tableau.
 \item En plus elle sert aussi à compter le nombre de tours utiles pour le calcul du score.
 \end{itemize}
 Signature de fonction :
@@ -322,7 +322,30 @@ void regles();
 
 \subsection{Chronomètre}
 Ici, nous allons expliquer les fonctions permettant le fonctionnnement du chronomètre ainsi que son affichage.
-A noter, que le chronomètre n'est pas en temps réel mais qu'il se met à jour à chaque input par l'utilisateur.
+A noter, que le chronomètre n'est pas en temps réel mais qu'il se met à jour à chaque input par l'utilisateur.\\
+
+\textbf{get\_time(...):}
+\begin{itemize}
+\item Cette fonction renvoie dans une variable \textbf{time\_t}, le moment où elle est appelée.
+\item \textbf{time\_t} représente le temps écoulé depuis le $1^{er}$ janvier 1970 à 00:00:00.
+\end{itemize}
+Signature de fonction :
+\begin{lstlisting}
+time_t get_time();
+\end{lstlisting}
+
+\textbf{affiche\_timer(...):}
+\begin{itemize}
+\item Cette fonction affiche le chronomètre lors de la partie.
+\item Il est de la forme \textbf{heures:minutes:secondes}. Pour chaque, deux chiffres sont affichés.
+\item Le paramètre \textit{start} contient le moment auquel la partie a commencé.
+\item Quand la fonction est appelée, on fait appel à la fonction \textbf{get\_time}. On fait ensuite la différence avec la valeur contenue dans \textit{start}. On obtient un résultat en secondes.
+\item Le paramètre \textit{decalage} contient la valeur obtenue dans le fichier sauvegarde. Comme ça le chronomètre commence aura au commencement la même valeur que lors de la sauvegarde.
+\end{itemize}
+Signature de fonction :
+\begin{lstlisting}
+void affiche_timer(time_t start, int *diff_int, int decalage);
+\end{lstlisting}
 \newpage
 
 \subsection{Score}
