@@ -356,7 +356,44 @@ Le calcul du score se fait par la formule suivante :
     score = 1000*num\_niveau - (temps\_ecoule*nombre\_tours\_ecoules)
 \end{equation}
 
+\textbf{calcule\_score(...):}
+\begin{itemize}
+\item Cette fonction calcule le score à un instant t de la partie selon la formule vu au-dessus.
+\end{itemize}
+Signature de fonction :
+\begin{lstlisting}
+int calcule_score(int nb_tours, int temps, int num_niveau);
+\end{lstlisting}
 
+\textbf{get\_best\_score(...):}
+\begin{itemize}
+\item Cette fonction récupère les scores stockés dans le document \textbf{score.txt} et les range dans le tableau passé en paramètre.
+\end{itemize}
+Signature de fonction :
+\begin{lstlisting}
+void get_best_score(int *tab);
+\end{lstlisting}
+
+\textbf{maj\_best\_score(...):}
+\begin{itemize}
+\item Cette fonction permet quant à elle de changer le score du niveau passé en paramètre dans le fichier. \textbf{score.txt}.
+\item La valeur est aussi remplacée dans le tableau.
+\end{itemize}
+Signature de fonction :
+\begin{lstlisting}
+void maj_best_score(int* score_tab, int best_score, int num_niveau);
+\end{lstlisting}
+
+\textbf{fichier\_score(...):}
+\begin{itemize}
+\item Cette fonction crée le fichier \textbf{score.txt}, utile s'il est supprimé par erreur.
+\end{itemize}
+Signature de fonction :
+\begin{lstlisting}
+void fichier_score();
+\end{lstlisting}
+
+\newpage
 
 
 \listoffigures
