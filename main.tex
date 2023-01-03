@@ -255,11 +255,12 @@ Le fichier \textbf{save.txt} est aussi dans le même répertoire et contient la 
 \begin{itemize}
 \item Cette fonction permet de sauvegarder la progression dans le fichier \textbf{save.txt}.
 \item Elle note le temps auquel la sauvegarde a été faite, le nombre de tours écoulés durant la partie, et le niveau.
+\item Elle renvoie un entier afin d'indiquer la réussite ou non de la sauvegarde.
 \end{itemize}
 
 Signature de fonction :
 \begin{lstlisting}
-void save(int** plateau, int niveau, int time, int nb_tours);
+int save(int** plateau, int niveau, int time, int nb_tours);
 \end{lstlisting}
 
 \textbf{charger(...):}
